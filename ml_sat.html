@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Sean Condon Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo">Home</a>
+									<ul class="icons">
+										<li><a href="https://github.com/seancondon99" class="icon brands fa-github" target="_blank" rel="noopener noreferrer"><span class="label">Github</span></a></li>
+										<li><a href="https://www.linkedin.com/in/sean-condon-9a0452187/" class="icon brands fa-linkedin-in" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Rapid Image Search with CNN Fingerprints</h1>
+									</header>
+
+									<span class="image fit"><img src="images/k_search_final.jpg" alt="" /></span>
+									<p></p>
+									<h2>Overview</h2>
+									<p>
+										An important task in the field of image analysis is finding similar images within a massive database. Image similarity search can be used, for example, to count all of the solar panels in the United States from satellite imagery and do a total energy output analysis,
+										or to search through the Earth's oceans to find and follow whales as they migrate. If you're dealing with image databases on the terabyte scale, it is not really feasible to compare one image directly with every other image in the database.
+										Instead, we can compress all of our images to information-dense fingerpints, and do the comparison among these fingerprints.
+									</p>
+									<p>
+										In this project, a ~70 GB dataset of aerial images is fed through a pretrained, state-of-the-art convolutional neural network (CNN), and the activation of an intermediate layer of this network is interpreted as
+										a low dimensional, information rich fingerprint for the original image. Similarity between two fingerprints (1-dimensional vectors) is then calculated as the euclidean distance.
+										The fingerprints offer a 175x data size reduction from the original images, so that the k-most-similar images to a query can be found in just over 3 seconds on a single CPU, despite the initial dataset being 70 GB.
+
+
+									</p>
+									<hr class="major" />
+									<h2>Methods</h2>
+									<h3>Data Collection and Preprocessing</h3>
+									<section id="bannernopad">
+									<div class="content">
+										<p>
+											The image database used for this project was a collection of high-resolution drone images from the <a href="https://github.com/dronedeploy/dd-ml-segmentation-benchmark" target="_blank" rel="noopener noreferrer">drone deploy git repo</a>.
+											The database contains 60 .TIF images of neighborhoods, natural scenes, and cities with a resolution of 10cm per pixel. When pixel values in the .TIFs are converted to 32-bit floats, the dataset has a total size of 70 GB.
+										</p>
+										<p>
+											These high-resolution drone images are then cut into smaller tiles, each of size 256 x 256 pixels. The tiling is acheived with a 128 pixel sliding window, so that image motifs are likely to be well centered in at least one tile.
+											Tiles with >50% null pixel values are removed from the dataset.
+										</p>
+										<p>
+											A small portion of an <b>example .TIF image</b> is shown the the right. The original image is 680 MB in size, and was processed into 3,836 tiles.
+										</p>
+									</div>
+									<span class="image object">
+										<img src="images/ml_sat_extif.jpg" alt=""/>
+									</span>
+									</section>
+									<h3>Compressing Images to CNN-Generated Fingerprints</h3>
+
+
+									<section id="bannernopad-flip">
+									<span class="image object">
+										<img src="images/resnet_arc.png" alt=""/>
+									</span>
+									<div class="content">
+										<p>
+											Tiles are compressed to low-dimensional fingerprints by being fed through a pretrained CNN. For this project, I used <a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener noreferrer">ResNet-18</a>, which has the architecture shown to the left.
+											ResNet-18 was trained to classify RGB images into 1000 different classes, and the intermediate features it learns to complete this task are useful for many computer vision tasks, including identifying similar motifs in geosatellite imagery.
+										</p>
+										<p>
+											Because we want ResNet to generalize to our satellite images (not just the 1000 classes it is trained to recognize), we remove the last layer of the network, and take the activations of the average_pool layer as each tile's fingerprint.
+											This effectively reduces each tile, initially ~200,000 floats, down to only 512 floats, giving a theoretical max data compression of 384x.
+										</p>
+										<p>
+											Once fingerprints are generated for all tiles in the dataset, the user selects a query image, and the k-most-similar images to the query can be returned as the k fingerprints with the least euclidean distance from the query fingerprint.
+										</p>
+									</div>
+
+									</section>
+
+									<hr class="major" />
+
+									<h2>Results</h2>
+									<p>
+										Here is an example of what the algorithm produces, with the query tile shown on the left and the 10 most similar images returned on the right:
+									</p>
+									<span class="image fit">
+										<img src="images/ml_sat_ex.jpg" alt=""/>
+									</span>
+									<p>
+										In terms of data compression, the fingerprints for all image tiles are stored in a hash table of structure <code>{tile_unique_identifier : fingerprint}</code>, so that a fingerprint can be quickly related back to its initial tile.
+										This hash table was implemented as a python dictionary, and has a size of 400 MB, meaning that we achieve a <b>data compression rate of 175x</b> relative to the initial image dataset of size 70 GB.
+										This data compression rate means that image similarity searches can be done with much less computational cost.
+									</p>
+									<p>
+										Actually finding the k-most-similar tiles to a query tile requires a euclidean distance calculation between the query fingerprint and all other fingerprints. This search has a time complexity that grows linearly with the amount of tiles.
+										We did speed tests on my CPU, and found that the 10 most similar images to a query can be computed in an average of <b>3.2 seconds</b> (95% CI 2.8 - 3.6s). This means that the entire 70 GB dataset can be searched on a single CPU in a reasonable amount of time.
+									</p>
+									<p>
+										Obviously, all of these results only matter if the algorithm returns images that actually look visually similar to the query. This is a difficult thing to quantify, but the qualitative results on image similarity are certainly promising!
+										Scroll back up to the top of this page to see a selection of 7 random queries, and the 10 most similar images for those queries. These results were not cherry-picked because they looked good. Instead, the query images were chosen randomly.
+									</p>
+									<h3>Code</h3>
+									<p>The code for this project is available on github, and there is also a written paper with a lot more detail that you can check out too! Find the links for both of these things below.</p>
+									<a class="button primary" href="https://github.com/seancondon99/rapid_image_search" target="_blank" rel="noopener noreferrer">Code on Github</a>&ensp;
+									<a class="button primary" download href="assets/ml_sat_small.pdf">Download Writeup</a>
+
+
+								</section>
+
+						</div>
+					</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
