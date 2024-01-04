@@ -27,46 +27,51 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>Rapid Image Search with CNN Fingerprints</h1>
+										<h1>SyncFlow : Flux synchronisé pour une gestion logistique optimale</h1>
 									</header>
 
 									<span class="image fit"><img src="images/k_search_final.jpg" alt="" /></span>
 									<p></p>
 									<h2>Overview</h2>
 									<p>
-										An important task in the field of image analysis is finding similar images within a massive database. Image similarity search can be used, for example, to count all of the solar panels in the United States from satellite imagery and do a total energy output analysis,
-										or to search through the Earth's oceans to find and follow whales as they migrate. If you're dealing with image databases on the terabyte scale, it is not really feasible to compare one image directly with every other image in the database.
-										Instead, we can compress all of our images to information-dense fingerpints, and do the comparison among these fingerprints.
+										La prise de commandes en temps réel dans le domaine logistique engendre des complexités importantes.
+										Des incertitudes persistent quant au stock en temps réel, au choix du fournisseur le mieux approvisionné, et à la recherche d'itinéraires optimisés pour garantir la sécurité des marchandises tout en minimisant les coûts. 
+										Les risques liés aux agressions, aux routes très fréquentées, aux péages élevés, et aux périodes de trafic intense s'ajoutent aux défis.
+										 Les exigences spécifiques, telles que la taille adéquate des camions et la nécessité de maintenir la fraîcheur des produits, compliquent davantage la gestion des commandes et des livraisons.
 									</p>
 									<p>
-										In this project, a ~70 GB dataset of aerial images is fed through a pretrained, state-of-the-art convolutional neural network (CNN), and the activation of an intermediate layer of this network is interpreted as
-										a low dimensional, information rich fingerprint for the original image. Similarity between two fingerprints (1-dimensional vectors) is then calculated as the euclidean distance.
-										The fingerprints offer a 175x data size reduction from the original images, so that the k-most-similar images to a query can be found in just over 3 seconds on a single CPU, despite the initial dataset being 70 GB.
+										Dans ce contexte, mon logiciel intervient en apportant une réponse méthodique et efficace à ces défis logistiques.
+										Il optimise la gestion des commandes en utilisant des algorithmes avancés, prenant en compte divers paramètres tels que la disponibilité du stock, la localisation des fournisseurs, et la planification d'itinéraires sûrs et économiques.
+										En intégrant une analyse approfondie des contraintes spécifiques liées aux marchandises et aux conditions saisonnières, il offre une solution technique pour améliorer la prise de décision dans un environnement logistique complexe.
+										Mon logiciel aspire humblement à faciliter la gestion des commandes et des livraisons, fournissant ainsi une approche réfléchie et adaptative pour les entreprises opérant dans ce contexte dynamique.
 
 
 									</p>
 									<hr class="major" />
-									<h2>Methods</h2>
-									<h3>Data Collection and Preprocessing</h3>
+									<h2>Stratégie et méthodes</h2>
+									<h3>Collecte et traitement des données en temps réel</h3>
 									<section id="bannernopad">
 									<div class="content">
 										<p>
-											The image database used for this project was a collection of high-resolution drone images from the <a href="https://github.com/dronedeploy/dd-ml-segmentation-benchmark" target="_blank" rel="noopener noreferrer">drone deploy git repo</a>.
-											The database contains 60 .TIF images of neighborhoods, natural scenes, and cities with a resolution of 10cm per pixel. When pixel values in the .TIFs are converted to 32-bit floats, the dataset has a total size of 70 GB.
+											Ce projet émerge avec une première étape axée sur la création d'une base solide pour une gestion logistique en temps réel.
+											Actuellement, l'attention se porte sur la construction d'une base de données robuste, constituant le socle des futures avancées.
+											Cette infrastructure permet la collecte et le traitement efficaces de données en temps réel, intégrant des fonctionnalités essentielles telles que la surveillance des niveaux de stock, le suivi des itinéraires des camions, et la prise en compte des conditions météorologiques.
 										</p>
 										<p>
-											These high-resolution drone images are then cut into smaller tiles, each of size 256 x 256 pixels. The tiling is acheived with a 128 pixel sliding window, so that image motifs are likely to be well centered in at least one tile.
-											Tiles with >50% null pixel values are removed from the dataset.
+											Dans cette première itération, mettant en lumière la méthodologie de collecte de données variée, allant des capteurs IoT aux interfaces API, la transparence est de mise sur l'approche flexible pour maintenir la continuité des opérations, même lorsque certaines données en temps réel ne sont pas disponibles.
+											En parallèle, les fondations des fonctionnalités initiales sont érigées, avec une base de données structurée servant de fondement pour des développements plus avancés.
 										</p>
 										<p>
-											A small portion of an <b>example .TIF image</b> is shown the the right. The original image is 680 MB in size, and was processed into 3,836 tiles.
+											
+											Cet article marque le point de départ de ce projet, soulignant l'engagement à innover dans le domaine de la logistique en temps réel. Alors que les bases sont jetées, l'anticipation se porte vers des évolutions significatives, avec l'expansion des fonctionnalités, l'intégration de nouvelles sources de données, et le raffinement continu de l'approche.
+											Restez à l'écoute pour découvrir comment ce projet évolue pour répondre aux défis complexes de la gestion logistique moderne.
 										</p>
 									</div>
 									<span class="image object">
 										<img src="images/ml_sat_extif.jpg" alt=""/>
 									</span>
 									</section>
-									<h3>Compressing Images to CNN-Generated Fingerprints</h3>
+									<h3>Perspectives futures</h3>
 
 
 									<section id="bannernopad-flip">
@@ -75,15 +80,19 @@
 									</span>
 									<div class="content">
 										<p>
-											Tiles are compressed to low-dimensional fingerprints by being fed through a pretrained CNN. For this project, I used <a href="https://arxiv.org/abs/1512.03385" target="_blank" rel="noopener noreferrer">ResNet-18</a>, which has the architecture shown to the left.
-											ResNet-18 was trained to classify RGB images into 1000 different classes, and the intermediate features it learns to complete this task are useful for many computer vision tasks, including identifying similar motifs in geosatellite imagery.
+											L'une des fonctionnalités centrales de ce projet sera l'optimisation avancée des itinéraires. En développant des algorithmes sophistiqués, l'objectif est de minimiser les coûts logistiques tout en garantissant des livraisons rapides et efficaces.
+											Cette fonctionnalité permettra de choisir les trajets les plus stratégiques en temps réel, tenant compte des conditions de trafic, des variations météorologiques, et des impératifs de sécurité.
 										</p>
 										<p>
-											Because we want ResNet to generalize to our satellite images (not just the 1000 classes it is trained to recognize), we remove the last layer of the network, and take the activations of the average_pool layer as each tile's fingerprint.
-											This effectively reduces each tile, initially ~200,000 floats, down to only 512 floats, giving a theoretical max data compression of 384x.
+											L'intégration poussée de capteurs IoT et de puces RFID constituera une fonctionnalité cruciale pour une gestion dynamique du stock.
+											En temps réel, cette technologie offrira une visibilité approfondie sur les niveaux de stock, permettant une réactivité immédiate aux fluctuations de la demande.
+											Elle préviendra également les ruptures de stock en initiant des réapprovisionnements automatisés, optimisant ainsi l'efficacité globale du processus logistique.
 										</p>
 										<p>
-											Once fingerprints are generated for all tiles in the dataset, the user selects a query image, and the k-most-similar images to the query can be returned as the k fingerprints with the least euclidean distance from the query fingerprint.
+											Les fonctionnalités axées sur la sécurité routière seront renforcées par des solutions innovantes. L'utilisation de données de surveillance intelligente et d'alertes en temps réel contribuera à minimiser les risques potentiels liés au transport des marchandises.
+											Parallèlement, une analyse en temps réel, notamment à travers des capteurs de température, garantira la fraîcheur des produits pendant le transport, assurant une qualité optimale à la livraison.
+
+                                            Ces fonctionnalités émergentes représentent des avancées significatives dans la gestion logistique en temps réel, démontrant une approche technique et innovante pour surmonter les défis complexes de la chaîne d'approvisionnement.
 										</p>
 									</div>
 
@@ -91,28 +100,26 @@
 
 									<hr class="major" />
 
-									<h2>Results</h2>
+									<h2>Resultats</h2>
 									<p>
-										Here is an example of what the algorithm produces, with the query tile shown on the left and the 10 most similar images returned on the right:
+										
+                                     Actuellement, aucune résultat concret n'est disponible à ce stade initial du projet.                 
 									</p>
 									<span class="image fit">
 										<img src="images/ml_sat_ex.jpg" alt=""/>
 									</span>
 									<p>
-										In terms of data compression, the fingerprints for all image tiles are stored in a hash table of structure <code>{tile_unique_identifier : fingerprint}</code>, so that a fingerprint can be quickly related back to its initial tile.
-										This hash table was implemented as a python dictionary, and has a size of 400 MB, meaning that we achieve a <b>data compression rate of 175x</b> relative to the initial image dataset of size 70 GB.
-										This data compression rate means that image similarity searches can be done with much less computational cost.
+										
 									</p>
 									<p>
-										Actually finding the k-most-similar tiles to a query tile requires a euclidean distance calculation between the query fingerprint and all other fingerprints. This search has a time complexity that grows linearly with the amount of tiles.
-										We did speed tests on my CPU, and found that the 10 most similar images to a query can be computed in an average of <b>3.2 seconds</b> (95% CI 2.8 - 3.6s). This means that the entire 70 GB dataset can be searched on a single CPU in a reasonable amount of time.
+										
+
 									</p>
 									<p>
-										Obviously, all of these results only matter if the algorithm returns images that actually look visually similar to the query. This is a difficult thing to quantify, but the qualitative results on image similarity are certainly promising!
-										Scroll back up to the top of this page to see a selection of 7 random queries, and the 10 most similar images for those queries. These results were not cherry-picked because they looked good. Instead, the query images were chosen randomly.
+
 									</p>
 									<h3>Code</h3>
-									<p>The code for this project is available on github, and there is also a written paper with a lot more detail that you can check out too! Find the links for both of these things below.</p>
+									<p>Le code sera disponible sur github et il y aura également un article téléchargeable que vous pourrez consulter ! </p>
 									<a class="button primary" href="https://github.com/seancondon99/rapid_image_search" target="_blank" rel="noopener noreferrer">Code on Github</a>&ensp;
 									<a class="button primary" download href="assets/ml_sat_small.pdf">Download Writeup</a>
 
