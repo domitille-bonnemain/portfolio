@@ -29,49 +29,38 @@
 									<header class="main">
 										<h1>Measuring Relativistic Particle Decay</h1>
 									</header>
-									<span class="image fit"><img src="images/muons_header.jpg" alt="" /></span>
+									<span class="image fit"><img src="images/Meteor1.png" alt="" /></span>
 
 									<p></p>
 									<h2>Overview</h2>
 									<p>
-										Earth's atmosphere is being continuously bombarded by high energy atomic particles called cosmic rays. These high energy rays slam into air molecules in the upper atmosphere, and rain down <a href="https://en.wikipedia.org/wiki/Air_shower_(physics)" target="_blank" rel="noopener noreferrer">cascades of particles</a> onto the surface below.
-										The initial collision creates pions, which decay almost instantaneously to muons, which should in turn decay rather quickly to electrons, photons, and other simpler particles.
-										The trouble is, by the time these particle cascades reach sea level, there shouldn't be any muons left, they should have decayed to other particles ages ago.
-										However, sea level muons are exceedingly common: if you hold your hand out flat, about 100 muons originating from cosmic ray collisions will pass through it every minute. What gives?
+										Notre projet de groupe visait à acquérir une expertise pratique dans l'intégration et la manipulation de données d'API sur un front-end. Pour cela, nous avons choisi de nous immerger dans l'API de la NASA en mettant en lumière les données concernant les impacts de météorites. Pour coordonner efficacement nos efforts, nous avons opté pour l'utilisation de Jamboard, un tableau de bord collaboratif, afin de suivre notre progression, partager des idées et allouer les tâches de développement. Guidés par les directives de notre école, nous avons mis en œuvre notre application en utilisant JavaScript comme langage principal, une décision qui a été facilitée par notre familiarité avec ce langage polyvalent.
+										Grâce à l'intégration de la bibliothèque Leaflet, nous avons pu représenter visuellement les données des impacts de météorites sur une carte du monde, offrant ainsi une expérience interactive et immersive à nos utilisateurs, tout en renforçant nos compétences en développement front-end et en manipulation d'API.
 									</p>
 									<p>
-										Using the scintillation detectors at MIT's junior physics laboratory, a colleague and I measured the velocity of 15,000 muons travelling from their cosmic ray origins to be 30.14 &#xb1; 1.96 cm / ns (basically right around the speed of light).
-										Although this sounds fast, it would take muons at this speed 50 microseconds to get from the upper atmospere to sea level.
-										However, if you bring muons to a complete stop in a scintillator chamber, their mean lifetime before decaying is only 2.2 microseconds. So how are so many muons making the atmosphere to sea level journey before decaying?
-										The answer is that this experiment is a famous proof of Einstein's Theory of Special Relativity: the muons coming from the upper atmosphere actually
-										have a much shorter distance to travel to sea level than we might think because of <a href="https://en.wikipedia.org/wiki/Length_contraction" target="_blank" rel="noopener noreferrer">length contraction</a>.
+										Le projet nous a confrontés à divers défis techniques, notamment la gestion des requêtes asynchrones vers l'API de la NASA pour récupérer les données en temps réel, ainsi que la manipulation et l'affichage des données complexes sur une interface utilisateur conviviale.
+										En naviguant à travers ces défis, nous avons acquis une compréhension plus approfondie des concepts clés de développement web, tels que la gestion des états, la manipulation du DOM et l'intégration de bibliothèques tierces. Notre collaboration étroite et notre engagement à surmonter les obstacles nous ont permis de développer non seulement nos compétences techniques, mais aussi nos capacités de résolution de problèmes et notre aptitude à travailler efficacement en équipe. En fin de compte, ce projet nous a non seulement permis de créer une application fonctionnelle et utile, mais aussi de consolider notre passion pour le développement logiciel et notre désir d'explorer de nouvelles technologies et méthodologies de travail.
 									</p>
 									<hr class="major" />
-									<h2>Methods</h2>
-									<h2>Velocity of Relativistic Muons</h2>
+									<h2>Données affichées</h2>
+									<!--<h2>Velocity of Relativistic Muons</h2>-->
 									<section id="bannernopad">
 									<div class="content">
 										<p>
-											To measure the velocoity of muons, we use <a href="https://en.wikipedia.org/wiki/Scintillator" target="_blank" rel="noopener noreferrer">scintillation detectors</a>, sheets of photosensitive material that emit electrons when cosmic particles like muons pass through them.
-											We have two scintillators (an upper one and a lower one), and we measure the delay from a particle that first travels through the top detector and then through the bottom detector.
-											We record thousands of particle travel times for a fixed separation between the top and bottom scintillators.
-											You can see a histogram of this data for a separation of 32.8 cm in the top plot to the right.
+											Notre projet a été conçu de manière à ce que lorsqu'un utilisateur clique sur un point rouge représentant un impact de météorite sur la carte, des données détaillées relatives à cet événement s'affichent instantanément.
 										</p>
 										<p>
-											In order to convert these times of flight into muon velocity, we need to know the average path length that muons take through the detector.
-											Because the scintillators are rectangles, and muons can come from any overhead angle, the estimation of the average path length is best done with a weighted monte carlo simulation.
-											We simulated millions of muons travelling through the detector geometry, weighing each by how likely the path was (directly overhead trajectories are more likely, trajectories close to one end of the detector are more easily picked up by the computer, etc).
+											Ces données comprennent le nom de la météorite, l'année de son impact, sa masse, ainsi que sa latitude et sa longitude exactes. 
 										</p>
 										<p>
-											Once we have the average time of flight and path length, we know the velocity. We repeat this procedure at a number of different separations to remove constant terms in the signal analysis chain, and the result is plotted to the right!
-											We have an average muon velocity of 30.14 &#xb1; 1.96 cm / ns with a R2 of 0.72.
+											Cette fonctionnalité interactive permet aux utilisateurs d'explorer les différents impacts de météorites à travers le monde et d'accéder à des informations précises sur chaque événement, enrichissant ainsi leur expérience utilisateur et leur permettant d'approfondir leur compréhension de ces phénomènes célestes fascinants.
 										</p>
 									</div>
 									<span class="image object">
-										<img src="images/muon_tof.png" alt=""/>
+										<img src="images/meteor.png" alt=""/>
 									</span>
 									</section>
-									<h2>Lifetime of Relativistic Muons</h2>>
+									<!--<h2>Lifetime of Relativistic Muons</h2>>
 
 
 									<section id="bannernopad-flip">
@@ -117,13 +106,12 @@
 										With these new numbers, the probability of a muon reaching sea level before decaying is actually only 1 / 62, which is much more reasonable!
 
 
-									</p>
+									</p>-->
 									<h3>Code</h3>
 									<p>
-                                        The code for this project - including the monte carlo simulations, the linear regression fit, the plot generation - is all on an old computer of mine.
-										I'm currently trying to get access to that computer, so that I can upload this project in full, but for now, please take a look at the writeup below for more details!
+                                        Le code est disponible sur mon Github! 
                                     </p>
-									<a class="button primary" download href="./assets/muons_writeup.pdf">Download Writeup</a>
+									<a class="button primary" download href="https://github.com/domitille-bonnemain/Meteor-Impact-Globe">Code du projet sur Github</a>
 
 								</section>
 
