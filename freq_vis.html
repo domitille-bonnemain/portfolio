@@ -27,54 +27,46 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>Music Frequency Visualization on LED Matrix</h1>
+										<h1>NeuroPause : Faciliter les pauses pour les personnes Asperger </h1>
 									</header>
 
 									<span class="image main"><img src="images/amplitude_header2.jpg" alt="" /></span>
 									<p></p>
 									<h2>Overview</h2>
 									<p>
-										A group of colleagues and I noticed that a lot of students have LEDs in their room, but sometimes these lights are a little boring and static - they don't interact with the environment.
-										To remedy this, we engineered an array of light fixtures that react to music and the ambient sound of a room, using an arduino, a microphone, and signal processing to break down incoming sound into its component frequencies and display them on programmable LEDs.
-										We implemented many different audio processing techniques, like FFTs, beat detection, filtering / EQ, built many different light displays, from single light strips to 15 foot boards of 3,600 LEDs, and even got funding from MIT's Sandbox Innovtation Fund.
-										We did this all in hopes of making lights that looked as cool as possible when you played music.
+										Neuropause, une extension Chrome originellement conçue comme un projet scolaire, a été transformée en un outil pratique grâce à une collaboration étroite avec des professionnels de la santé travaillant avec des personnes atteintes du syndrome d'Asperger. 
+										En utilisant JavaScript et JSON, l'équipe a développé une solution intuitive pour gérer le temps d'écran, spécifiquement adaptée aux besoins de cette communauté. 
 									</p>
 									<p>
-										With a project like this, seeing is believing! So I've embedded a promo video that I shot and edited myself. The light board shown in this video is the largest one we made (the 15 foot model) that can be seen at the top of this page.
-										The board works like this: the component frequencies of the audio (the song you hear playing) are computed with an FFT and then broadcasted to the LED strips.
-										The lights in the center of the board represent the lower frequencies of sound (40 Hz to around 200 Hz), while the lights on the left and right edges represent the highest frequencies of sound (up to 20,000 Hz).
-										The board is mirrored about the center, and the height along the y-axis represents the volume in that frequency bin. Essentially, the board shows each frame of the spectrogram of the song playing!
+										En plus de son utilité directe, Neuropause vise à sensibiliser le public et à promouvoir l'inclusion en intégrant des fonctionnalités éducatives dans l'extension, démontrant ainsi son engagement à créer un impact positif et significatif dans la vie quotidienne des personnes atteintes du syndrome d'Asperger.
 									</p>
 									<span class = "center">
 									<iframe width="896" height="400" src="https://www.youtube.com/embed/H4OFDt7eSHU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 									</span>
 									<hr class="major" />
 
-									<h2>Programming a Strip of LEDs</h2>
+									<h2>Détails sur les fonctionnalités</h2>
 
 									<p>
-										Unfortunately, a lot of the code I wrote for this project is tied up in private repos, and can't be shared. However, I did write some code to turn the single strip of LEDs in my room into a music reactive piece.
-										I did things like break up sound into its component frequencies with an FFT and implement a beat-detection algorithm with a sliding window. I even wrote a little music-reactive game aptly titled "jump game" in which the one-dimensional player has to jump over one-dimensional spikes by clapping.
-										Please see more details on that below!
+										Parmi les fonctionnalités clés de Neuropause, on retrouve un timer intégré qui se déclenche automatiquement dès le lancement de l'extension. Les utilisateurs ont la possibilité de personnaliser la durée du timer selon leurs préférences, déterminant ainsi le moment où la pause sera activée. Lorsque le timer atteint sa limite prédéfinie, Neuropause entre en action en floutant les fenêtres ouvertes, offrant ainsi une interruption visuelle subtile mais efficace.
+										Cette fonctionnalité permet aux utilisateurs de prendre des pauses régulières et de réduire leur temps d'écran de manière proactive, contribuant ainsi à une utilisation plus équilibrée et saine de la technologie.
 
 									</p>
 
 
-									<h3>Audio Processing on Teensy</h3>
+									<h3>Design adapté</h3>
 
 									<section id="bannernopad">
 									<div class="content">
 										<p>
-											The brains of the operation was a Teensy (basically a small Arduino or microcontroller) which reads in the audio information from a microphone, converts it into a display for an LED strip, and then sends that display to the lights.
-											In the (poorly recorded) video to the right, the Teensy is doing a Fast Fourier Transform (FFT) on the song you can hear playing.
+											En outre, dans un souci de cohérence avec les objectifs du projet, des couleurs douces et apaisantes ont été sélectionnées pour l'interface visuelle de Neuropause
 										</p>
 										<p>
-											The output of the FFT is then equalized (because humans and computers perceive sound differently) and the power of each frequency bin is displayed on the lights.
-											There's some added effects on top, like a rainbow multiplier and a decay on pixel values, but those are the basics. You can see the bass notes of the song in the middle in blue, and the high frequencies or claps of the song are visible on the right side in purple.
+											Cette décision découle de la volonté d'éviter toute perturbation excessive du cerveau, notamment en évitant l'utilisation de couleurs vives qui pourraient être incongrues avec l'objectif de favoriser une pause calme et détendue.
 										</p>
 										<p>
-											In another audio processing algorithm I wrote, the beat of a song is detected with a sliding window that analyzes the average power and variance of the bass frequencies.
-											I also made an EQ visualizer with multiple LED strips, and a simple game where a character jumps over "spikes" when you clap.
+											Ainsi, l'esthétique de l'extension contribue à créer un environnement propice à la relaxation et à la régénération, renforçant ainsi l'efficacité de Neuropause dans la promotion d'une utilisation équilibrée des écrans.
+											
 
 										</p>
 
@@ -86,26 +78,25 @@
 									<br />
 
 
-									<h3>IOS Interface with Lights</h3>
+									<h3>Articles écrit sur l'extension</h3>
 									<section id="bannernopad">
 									<div class="content">
 										<p>
-											Originally, the microcontroller, microphone, and other electrical components were connected to a power supply such that the lights were always on whenever the power supply was on.
-											This was a little restrictive, so I got a <a href = "https://how2electronics.com/bluetooth-low-energy-tutorial-with-hm-10-ble-4-0-arduino/" target="_blank" rel="noopener noreferrer">Bluetooth Low Energy device</a> that could communicate simple messages between the microcontroller and my phone, so that I could turn the lights off, change their settings, or change their mode with a tap on my screen.
+											
+                                         Afin de rendre l'extension plus accessible et transparente quant à son fonctionnement, un article détaillé a été rédigé pour présenter Neuropause. 
 										</p>
 
 										<p>
-											I made an iPhone app which would handle all this overhead. It would first scan the area for all BLE-enabled devices, and return the ones with the correct ID. The user could then connect to the device, and send it strings of information.
-											Strings (like "on" or "off") would be processed by the Teensy and in turn change the lights (in this case, turning them on or off). The Teensy would then broadcast its updated state back to the BLE-device and back to the iPhone so the user would know of the state change.
+											Cet article offre un aperçu complet de la conception de l'extension, expliquant en détail ses fonctionnalités, son développement technique et les motivations derrière chaque aspect de son design. Grâce à cette ressource, les utilisateurs intéressés par Neuropause peuvent non seulement télécharger l'extension, mais aussi comprendre pleinement son utilité et son processus de création.
+											En fournissant un résumé clair et concis de l'extension, cet article vise à rendre l'expérience utilisateur plus enrichissante et transparente, tout en encourageant une utilisation plus réfléchie et consciente de la technologie.
 										</p>
 										<p>
-											Since you already got a chance to see the music frequency visualizer above, here is another mode the lights could display.
-											It's a volume EQ, that shows the volume in each of 4 possible frequency bins. On the far left we have the very lowest of frequencies (the bass notes), and moving to the right the frequency bins get higher and higher.
-											Please find the code for both the audio processing on Teensy and the IOS app interface with the links below!
+											En outre, la rédaction de cet article visait également à exprimer notre gratitude envers tous ceux qui ont contribué au développement de Neuropause.
+											En mettant en lumière les efforts de chacun et en soulignant l'importance de leur contribution, nous avons cherché à reconnaître publiquement leur soutien et leur engagement envers ce projet. Cette initiative reflète notre engagement envers la collaboration et le partage des connaissances, tout en renforçant les liens au sein de la communauté qui a rendu possible la création de cette extension innovante.
 										</p>
 
 									</div>
-									<span class="image object">
+									<!--<span class="image object">
 										<iframe width="500" height="450" src="https://www.youtube.com/embed/Y3pGDXp62rU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 									</span>
 									</section>
@@ -133,7 +124,7 @@
 
 									<span class="center">
 										<iframe width="896" height="400" src="https://www.youtube.com/embed/t3DmYTCVAPY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-									</span>
+									</span>-->
 
 
 								</section>
