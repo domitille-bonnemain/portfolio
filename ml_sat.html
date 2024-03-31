@@ -54,14 +54,16 @@
 
 									</p>
 									<p>Cette brève description met en évidence la démarche axée sur les besoins clients et l'importance des retours reçus lors de mes immersions dans le processus de développement de l'outil de prise de commande.
-										<span class="image object">
+									</p>
+	 									<span class="image object">
+											<h2>Architecture</h2>
 											<img src="images/architecture.png" alt="" height="300">
 
 
 										</span>
 
 									</p>
-									<hr class="major" />
+									<!--<hr class="major" />-->
 									<h2>Stratégie et méthodes</h2>
 									<h3>Collecte et traitement des données en temps réel</h3>
 									<section id="bannernopad">
@@ -73,8 +75,13 @@
 
 										<p>
 											Face aux défis rencontrés, je suis resté focalisé sur mon plan d'action initial, demeurant concentré sur l'idée de base du produit, notamment sa version initiale (V1) dans Figma.
-										<p> Les parties vertes et bleues représentaient les priorités que je m'étais fixées, et c'est précisément ce que j'ai développé dans ma V1. J'ai adopté une approche méthodique, préservant le code précédent par des commentaires tout en développant une nouvelle logique conforme aux besoins métier émergents.
-											En parallèle du développement, j'ai surveillé attentivement les performances de l'interface web, en inspectant les outils de développement du navigateur pour détecter les problèmes potentiels. Les logs ont joué un rôle crucial en me fournissant une visibilité claire sur les erreurs rencontrées, ce qui m'a permis de les résoudre de manière efficace. À chaque fois que j'ai réussi à résoudre une erreur, j'ai consigné la solution dans un fichier dédié que j'ai conservé dans mon projet. De plus, j'ai maintenu une gestion rigoureuse des versions en enregistrant les différentes itérations du projet dans des dossiers zippés sur mon ordinateur, assurant ainsi une traçabilité claire de son évolution.</p>
+										<p> Les parties <strong>jaunes</strong> et <strong>vertes</strong> représentaient les priorités que je m'étais fixées, et c'est précisément ce que j'ai développé dans ma V1. J'ai adopté une approche méthodique, préservant le code précédent par des commentaires tout en développant une nouvelle logique conforme aux besoins métier émergents.
+											En parallèle du développement, j'ai surveillé attentivement les performances de l'interface web, en inspectant les outils de développement du navigateur pour détecter les problèmes potentiels.
+											<p>Les logs <strong>(IMAGE CI-DESSOUS)</strong>  ont joué un rôle crucial en me fournissant une visibilité claire sur les erreurs rencontrées, ce qui m'a permis de les résoudre de manière efficace.
+											</p>
+											Aussi, j'ai accédé à mon serveur local pour vérifier le bon fonctionnement de l'API que j'avais développée, afin de m'assurer qu'elle récupérait correctement les données de ma base de données <strong>(RESULTAT CI-DESSOUS)</strong>.
+.
+											À chaque fois que j'ai réussi à résoudre une erreur, j'ai consigné la solution dans un fichier dédié que j'ai conservé dans mon projet. De plus, j'ai maintenu une gestion rigoureuse des versions en enregistrant les différentes itérations du projet dans des dossiers zippés sur mon ordinateur, assurant ainsi une traçabilité claire de son évolution.</p>
 
                                             <p>J'ai également mis en place le Domain-Driven Development (DDD) dans mon projet pour organiser les packages par domaine.</p>
                                              Cette façon de faire m'a été conseillée par mon mentor de projet, Thomas Wilgenbus, un expert en Java que j'ai choisi pour son expertise dans ce domaine.
@@ -84,26 +91,39 @@
 											Cette approche méthodique et itérative a permis une progression efficace dans le développement de mon outil de prise de commande, en garantissant sa qualité, sa fiabilité et sa conformité aux besoins spécifiques des utilisateurs.
 										
 										</p>
+										<div style="display: flex; flex-wrap: nowrap;">
+										
+											
+											<!-- Deuxième image -->
+											<span class="image object" style="margin-right: 230px;">
+												<img src="images/json_produit.png" style="width: 700px; height: 700px; " alt="" />
+											</span>
+											
+											<!-- Troisième image -->
+											<span class="image object">
+												<img src="images/logs.png" style="width: 600px; height: 850px; " alt="" />
+											</span>
+										</div>
 									</div>
 									<span class="image object">
-										<!--<img src="images/plan.png" alt=""/>-->
-										<object data="images/ux_phase1.pdf" type="application/pdf" width="100%" height="600">
+										<div style="display: flex;">
+											<!-- Image  -->
+											<span class="image object" style="margin-right: 20px;">
+												<!--<img src="images/plan.png" alt=""/>-->
+												<img src="images/ux_plan2.png" style="width: 800px; height: 800px;" alt="" />
+											</span>
 											
-										</object>
+										
+										</div>
+										
+										
 										
 									</span>
 									</section>
-									<h3>Perspectives futures</h3>
-
-
-									<section id="bannernopad-flip">
-									<span class="image object">
-										<!--<img src="images/future.png" alt=""/>-->
-										<object data="images/ux_phase2.pdf" type="application/pdf" width="100%" height="600">
-											<p>Votre navigateur ne peut pas afficher le fichier PDF. Vous pouvez le télécharger en cliquant <a href="images/ux_phase1.pdf">ici</a>.</p>
-										</object>
-										
-									</span>
+									
+									
+									<h2>Perspectives futures</h2>
+									<h3>Prochainement dans la partie2</h3>
 									<div class="content">
 										<p>
 											Dans les futures itérations de mon outil de prise de commande, je prévois d'intégrer un slider dynamique pour permettre aux utilisateurs de choisir facilement et avec précision la quantité de produits souhaitée. Cette fonctionnalité interactive améliorera l'expérience utilisateur en offrant une interface conviviale pour la sélection des quantités.
@@ -118,9 +138,46 @@
 										</p>
 									</div>
 
+									<h2>Résultat du CRUD sur le front</h2>
+									
+									<div>
+										
+											
+										<!-- images -->
+										<table>
+											  <td>
+												<img src="images/vue2.png" alt="">
+											  </td>
+											
+											<tr>
+											  <td>
+												
+												<p> <strong>Lorsque de nouvelles valeurs sont saisies pour la date souhaitée, la date butoir et la quantité de commande dans l'interface utilisateur, les valeurs correspondantes des lignes déjà présentes dans la base de données sont automatiquement mises à jour, car j'ai configuré le backend pour que les mêmes identifiants (IDs) soient associés aux données dans l'interface utilisateur et dans la base de données.</strong></p>
+												 
+												<div style="display: inline-block;">
+												  <img src="images/ddb1.png" alt="" style="margin-right: 20px;">
+												  <p> <strong> L'ID 852 (date_souhaitee et date_butoir) et l'ID 854 (quantite_commandee) ont été mises à jour.</strong>  </p>
+												
+												  <img src="images/ddb2.png" alt="" style="margin-right: 40px;">
+												</div>
+											  </td>
+											
+										  </table>
+										  
+										  
+										  
+										  
+										  
+										  
+										  
+										</span>
+									</div>
+										<!--<span class="image object">
+											<img src="images/future2.png" style="width: 990px; height: 600px;" alt="" >-->
+
 									</section>
 
-									<hr class="major" />
+								
 
 									<!--<h2>Resultats</h2>
 									<p>
@@ -140,7 +197,8 @@
 									<p>
 
 									</p>
-									<h3>Code</h3>
+
+									<h2>Code disponible sur Github avec un ReadMe explicatif</h2>
 									<p>Le code est disponible sur mon profil Github. </p>
 									<a class="button primary" href="https://github.com/domitille-bonnemain/Syncflow" target="_blank" rel="noopener noreferrer">Code on Github</a>&ensp;
 									<!--<a class="button primary" download href="assets/ml_sat_small.pdf">Download Writeup</a>-->
