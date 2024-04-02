@@ -166,7 +166,50 @@
 									</section>
 									
 									
-									
+									<h2>Validation et tests de qualité du code</h2>
+									<h3>Tests unitaires des fonctionnalités principales</h3>
+									<section id="bannernopad">
+									<div class="content">
+
+										<p>
+											<strong>Tests de contrôleurs REST :</strong><br>
+											Ces tests vérifient que mes contrôleurs, qui gèrent les requêtes HTTP, renvoient les bonnes réponses. J'ai effectué ces tests en utilisant des outils tels que Postman, SOAP UI, ainsi que directement depuis mon terminal et mon backend. Par exemple, je vérifie que lorsque j'envoie une requête pour récupérer un utilisateur, le contrôleur renvoie bien les informations de cet utilisateur.
+										</p>
+										
+										
+										<p>
+											<strong>Tests de validation :</strong><br>
+											Ces tests vérifient que les règles de validation que j'ai définies pour mes modèles sont appliquées correctement. Je vérifie que les contraintes de validation sont respectées et que les erreurs sont correctement gérées. Par exemple, je vérifie que lorsque j'essaie de créer un nouvel utilisateur avec un email invalide, l'application renvoie un message d'erreur approprié.
+										</p>
+										
+										<p>
+											<strong>Tests de persistance :</strong><br>
+											Ces tests vérifient que mes classes Repository, qui interagissent avec la base de données, fonctionnent correctement. J'ai effectué ces tests en utilisant des commandes curl directement depuis mon terminal pour simuler les appels à la base de données et vérifier les résultats. Par exemple, je vérifie que lorsque j'appelle la méthode pour récupérer un utilisateur dans le repository, celui-ci renvoie bien les bonnes données depuis la base de données.
+										</p>
+										
+										
+										<p>
+											<strong>Tests de l'API développée :</strong><br>
+											Pour tester ma propre API, j'ai utilisé des outils tels que <strong>Postman</strong>, <strong>CURL</strong> et des <strong>requêtes HTTP directement depuis mon terminal</strong>. J'ai commencé par définir les cas de test pour chaque fonctionnalité de mon API, comme la création, la lecture, la mise à jour et la suppression des ressources.
+											Ensuite, j'ai préparé mon environnement de test en configurant une base de données de test avec des données pré-définies.
+											<p>En envoyant des requêtes HTTP à mon API, j'ai vérifié les réponses renvoyées pour m'assurer qu'elles étaient conformes à mes attentes. J'ai également testé le comportement de mon API dans des scénarios d'erreur en envoyant des requêtes avec des données incorrectes et en vérifiant les réponses d'erreur correspondantes.</p>
+											Pour faciliter le processus de test, j'ai envisagé d'automatiser certains tests en utilisant des outils de test automatisés comme JUnit ou RestAssured. Cela me permettrait de répéter rapidement mes tests à chaque fois que je fais des modifications à mon API.
+										</p>
+										
+										
+										<p>
+											<strong>Tests d'intégration :</strong><br>
+											Ces tests vérifient que tous les composants de mon application fonctionnent correctement ensemble. Je teste les interactions entre les contrôleurs, les services et les repositories pour m'assurer qu'ils communiquent correctement entre eux. Par exemple, je vérifie que lorsque j'envoie une requête HTTP, celle-ci déclenche correctement les opérations nécessaires dans les services et les repositories pour traiter cette requête.
+										</p>
+										
+										<p>
+											En parallèle, j'ai utilisé <strong>Postman</strong> et <strong>SOAP UI</strong> pour simuler les appels à l'API REST et aux services web SOAP, respectivement. Cela m'a permis de valider le bon fonctionnement de ces services et d'identifier les éventuels problèmes d'intégration ou de communication. J'ai également maintenu un fichier de suivi sur <strong>Google Meet</strong> dans lequel j'ai consigné toutes les erreurs rencontrées et les solutions que j'ai apportées pour les résoudre, incluant les aspects liés à la base de données, au backend et au front-end. Cette pratique m'a aidé à garder une trace de mes découvertes et à capitaliser sur mes expériences pour éviter de reproduire les mêmes erreurs à l'avenir.
+										</p>
+										
+										<p>
+											Enfin, j'ai consigné l'ensemble de mes commandes dans un fichier <strong>shell</strong>, ainsi que dans mon document <strong>Google Meet</strong>.
+										</p>
+										
 
 									<h2>Résultat du CRUD sur le front</h2>
 									
